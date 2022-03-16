@@ -1,16 +1,18 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
+                     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                     .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
+                     .AddEnvironmentVariables();
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+var env = app.Environment;
+if (app.Environment.IsDevelopment() || env.EnvironmentName == "Local")
 {
     app.UseSwagger();
     app.UseSwaggerUI();
