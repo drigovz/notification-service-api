@@ -9,7 +9,7 @@ builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
                      .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
                      .AddEnvironmentVariables();
 
-builder.Services.AddServices();
+builder.Services.AddServices(builder.Configuration);
 builder.Services.AddScoped<NotificationContext>();
 builder.Services.AddControllers()
     .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<NotificationContext>());

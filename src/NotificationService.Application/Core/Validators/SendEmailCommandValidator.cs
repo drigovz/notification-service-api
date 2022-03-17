@@ -7,10 +7,9 @@ namespace NotificationService.Application.Core.Validators
     {
         public SendEmailCommandValidator()
         {
-            RuleFor(x => x.From).NotNull().NotEmpty().EmailAddress();
             RuleFor(x => x.To).NotNull().NotEmpty().EmailAddress();
             RuleFor(x => x.Subject).NotNull().NotEmpty();
-            RuleFor(x => x.Body).NotNull().NotEmpty();
+            RuleFor(x => x.TemplateBody).NotNull().NotEmpty();
         }
     }
 }
