@@ -1,3 +1,7 @@
+using FluentValidation.AspNetCore;
+using NotificationService.Application.Notifications;
+using NotificationService.Infra.IoC.DependencyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
@@ -5,7 +9,11 @@ builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
                      .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
                      .AddEnvironmentVariables();
 
-builder.Services.AddControllers();
+builder.Services.AddServices();
+builder.Services.AddScoped<NotificationContext>();
+builder.Services.AddControllers()
+    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<NotificationContext>());
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
