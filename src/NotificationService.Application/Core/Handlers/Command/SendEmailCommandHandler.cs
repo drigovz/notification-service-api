@@ -34,10 +34,20 @@ namespace NotificationService.Application.Core.Handlers.Command
             //    email.Attach(request.Attach);
 
             var emailResult = await email.SendAsync();
+            if (emailResult?.ErrorMessages?.Count > 0)
+            {
+                foreach (var error in emailResult?.ErrorMessages)
+                    _notification.AddNotification($"Mail Error", error);
+
+                return new GenericResponse
+                {
+                    Notifications = _notification.Notifications,
+                };
+            }
 
             return new GenericResponse
             {
-                Result = null,
+                Result = "Success - mail sended!",
             };
         }
     }
