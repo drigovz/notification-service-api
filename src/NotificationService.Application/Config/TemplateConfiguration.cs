@@ -7,11 +7,11 @@ namespace NotificationService.Application.Config
 {
     public static class TemplateConfiguration
     {
-        public static string Build(object model)
+        public static string Build(object model, string file)
         {
             try
             {
-                string templateFile = Path.Combine($"{Directory.GetCurrentDirectory()}\\Templates\\", $"Emails\\Index.cshtml"),
+                string templateFile = Path.Combine($"{Directory.GetCurrentDirectory()}\\Templates\\", file),
                        templateKey = Guid.NewGuid().ToString(),
                        html = File.ReadAllText(templateFile);
 
