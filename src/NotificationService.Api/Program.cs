@@ -10,6 +10,7 @@ builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
                      .AddEnvironmentVariables();
 
 builder.Services.AddServices(builder.Configuration);
+builder.Services.AddRepositories(builder.Configuration);
 builder.Services.AddScoped<NotificationContext>();
 builder.Services.AddControllers()
     .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<NotificationContext>());
