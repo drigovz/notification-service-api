@@ -1,5 +1,6 @@
 ﻿using FluentEmail.Core;
 using MediatR;
+using NotificationService.Application.Config;
 using NotificationService.Application.Core.Commands;
 using NotificationService.Application.Notifications;
 
@@ -20,9 +21,11 @@ namespace NotificationService.Application.Core.Handlers.Command
 
         public async Task<GenericResponse> Handle(SendEmailCommand request, CancellationToken cancellationToken)
         {
+            var result = TemplateConfiguration.Build(new { Name = "Exemple", Email = request.To });
+
             var email = _fluentEmail.To(request.To)
                         .Subject(request.Subject)
-                        .Body(request.TemplateBody);
+                        .Body(result, true);
 
             if (!string.IsNullOrWhiteSpace(request.Cc))
                 email.CC(request.Cc);
