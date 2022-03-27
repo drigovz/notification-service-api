@@ -1,10 +1,10 @@
 ﻿using FluentEmail.Core;
 using MediatR;
 using NotificationService.Application.Config;
-using NotificationService.Application.Core.Commands;
+using NotificationService.Application.Core.Emails.Commands;
 using NotificationService.Application.Notifications;
 
-namespace NotificationService.Application.Core.Handlers.Command
+namespace NotificationService.Application.Core.Emails.Handlers.Command
 {
     public class SendEmailCommandHandler : IRequestHandler<SendEmailCommand, GenericResponse>
     {

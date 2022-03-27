@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace NotificationService.Application.Core.Commands
+namespace NotificationService.Application.Core.Emails.Commands
 {
     public class SendEmailCommand: IRequest<GenericResponse>
     {

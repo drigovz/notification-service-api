@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using NotificationService.Application.Core.Commands;
+using NotificationService.Application.Core.Emails.Commands;
 
-namespace NotificationService.Application.Core.Validators
+namespace NotificationService.Application.Core.Emails.Validators
 {
     public class SendEmailCommandValidator : AbstractValidator<SendEmailCommand>
     {
