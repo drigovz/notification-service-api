@@ -11,9 +11,9 @@ namespace NotificationService.Application.Config
         {
             try
             {
-                string templateFile = Path.Combine($"{Directory.GetCurrentDirectory()}\\Templates\\", file),
+                string templateFile = Path.Combine($"{Directory.GetCurrentDirectory()}/Templates/", file),
                        templateKey = Guid.NewGuid().ToString(),
-                       html = File.ReadAllText(templateFile);
+                       html = File.ReadAllText(templateFile); 
 
                 var config = new TemplateServiceConfiguration
                 {

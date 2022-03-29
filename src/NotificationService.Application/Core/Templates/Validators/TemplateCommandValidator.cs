@@ -10,7 +10,7 @@ namespace NotificationService.Application.Core.Templates.Validators
             RuleFor(x => x.Title).NotNull().NotEmpty();
             RuleFor(x => x.Subject).NotNull().NotEmpty();
             RuleFor(x => x.File).NotNull().NotEmpty();
-            RuleFor(x => x.Type).NotNull().NotEmpty().IsInEnum();
+            RuleFor(x => x.Type).NotEmpty().IsInEnum();
         }
     }
 }

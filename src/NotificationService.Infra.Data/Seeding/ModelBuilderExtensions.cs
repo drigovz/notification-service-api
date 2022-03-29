@@ -8,9 +8,9 @@ namespace NotificationService.Infra.Data.Seeding
     {
         public static void Seed(this ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Template>().HasData(
-                new Template("E-mail template exemple", "email-template-exemple", $"Emails\\Index.cshtml", TemplateType.Email)
-            );
+            //modelBuilder.Entity<Template>().HasData(
+            //    new Template("E-mail template exemple", "email-template-exemple", $"Emails\\Index.cshtml", TemplateType.Email)
+            //);
         }
     }
 }
